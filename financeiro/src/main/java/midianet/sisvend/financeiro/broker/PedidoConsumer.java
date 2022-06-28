@@ -1,4 +1,4 @@
-package midianet.sisvend.financeiro;
+package midianet.sisvend.financeiro.broker;
 
 import lombok.extern.slf4j.Slf4j;
 import midianet.sisvend.model.Pedido;
@@ -11,10 +11,9 @@ public class PedidoConsumer {
 
     @KafkaListener(topics = "${pedidos.topico}", groupId = "${spring.kafka.consumer.group-id}")
     public void consumer(Pedido pedido) {
-        log.info(String.format("Pedido recebido [%s], viabilizando o pagamento para o cliente %s, no valor de %s",
+        log.info("\n [Módulo Financeiro]\n Pedido recebido: {}\n Viabilizando o pagamento do cliente: {}\n Valor: {}",
             pedido.getId(),
             pedido.getCliente(),
-            pedido.getValor())
-        );
+            pedido.getValor());
     }
 }
