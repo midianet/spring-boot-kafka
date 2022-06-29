@@ -24,3 +24,5 @@ dist/
 nbdist/
 .nb-gradle/
 .mvn/
+/financeiro.trace.db
+/financeiro.mv.db
