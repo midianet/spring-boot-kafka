@@ -26,7 +26,8 @@ public class PedidoProducer {
     }
 
     public Pedido send(final @RequestBody Pedido pedido) {
-        final String key = UUID.randomUUID().toString();
+        final var id = UUID.randomUUID().getMostSignificantBits();
+        final String key = String.valueOf(id < 0 ? id * -1: id);
         pedido.setId(key);
         kafkaTemplate.send(topico, key,  pedido);
         return pedido;

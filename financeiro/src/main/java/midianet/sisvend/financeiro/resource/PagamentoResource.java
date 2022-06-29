@@ -1,30 +1,27 @@
 package midianet.sisvend.financeiro.resource;
 
+import jdk.jfr.ContentType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import midianet.sisvend.financeiro.broker.PagamentoProducer;
+import midianet.sisvend.financeiro.service.PagamentoService;
 import midianet.sisvend.model.Pedido;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/pagamentos")
 public class PagamentoResource {
+    private final PagamentoService service;
 
-    private final PagamentoProducer producer;
-
-    public PagamentoResource(PagamentoProducer producer) {
-        this.producer = producer;
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping("/{pedido}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void send(@RequestBody Pedido pedido) {
-        log.info("\n [Módulo Financeiro]\n Pagamento recebido\n Pedido: {}\n Cliente: {}\n Valor: {}",
-                pedido.getId(),
-                pedido.getCliente(),
-                pedido.getValor());
-        producer.send(pedido);
+    public void send(@PathVariable final String pedido) {
+        service.receber(pedido);
     }
 
 }
