@@ -15,6 +15,7 @@ public class PedidoConsumer {
     private final PedidoService service;
     @KafkaListener(topics = "${pedidos.topico}", groupId = "${spring.kafka.consumer.group-id}")
     public void consumer(final Pedido pedido) {
+        pedido.setStatus("Aguardando Pagamento");
         service.salvar(pedido);
         log.info("\n [Módulo Financeiro]\n Pedido recebido: {}\n Viabilizando o pagamento do cliente: {}\n Valor: {}",
                 pedido.getId(),
