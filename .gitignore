@@ -26,3 +26,5 @@ nbdist/
 .mvn/
 /financeiro.trace.db
 /financeiro.mv.db
+/venda.mv.db
+/venda.trace.db
