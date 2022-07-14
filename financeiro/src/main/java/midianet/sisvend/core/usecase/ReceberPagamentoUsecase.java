@@ -32,6 +32,7 @@ public class ReceberPagamentoUsecase {
         final var pagamento = pagamentoRepository.save(Pagamento.builder()
                         .data(LocalDateTime.now())
                         .valor(pedido.getValor())
+                        .vendedor(pedido.getVendedor())
                         .pedido(pedido.getId()).build());
         pagamentoRecebidoProducer.send(pagamento);
         log.info("\n [Módulo Financeiro]\n Pagamento recebido\n Pedido: {}\n Cliente: {}\n Valor: {}",

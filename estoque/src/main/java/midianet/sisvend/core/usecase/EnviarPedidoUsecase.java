@@ -13,7 +13,6 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class EnviarPedidoUsecase {
-
     private final PedidoEnviadoProducer envioProducer;
 
     public void execute(final Pedido pedido){

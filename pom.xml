@@ -11,11 +11,10 @@
 	</parent>
 
 	<groupId>midianet</groupId>
-	<artifactId>kafka</artifactId>
+	<artifactId>sisvend</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<name>kafka</name>
-	<description>Kafka</description>
+	<name>SisVend</name>
 
 	<properties>
 		<java.version>16</java.version>

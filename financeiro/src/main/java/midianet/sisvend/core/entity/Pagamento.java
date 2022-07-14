@@ -25,6 +25,7 @@ public class Pagamento implements Serializable {
 
     private String pedido;
     private Double valor;
+    private String vendedor;
     private LocalDateTime data;
 
 }

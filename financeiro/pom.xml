@@ -6,11 +6,12 @@
 
     <parent>
         <groupId>midianet</groupId>
-        <artifactId>kafka</artifactId>
+        <artifactId>sisvend</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <artifactId>financeiro</artifactId>
+    <name>Financeiro</name>
 
     <dependencies>
         <dependency>
