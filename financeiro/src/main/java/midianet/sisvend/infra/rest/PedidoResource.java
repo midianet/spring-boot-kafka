@@ -3,6 +3,7 @@ package midianet.sisvend.infra.rest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import midianet.sisvend.core.entity.Pedido;
+import midianet.sisvend.core.usecase.LimparTudoUsecase;
 import midianet.sisvend.core.usecase.ListarPedidosUsecase;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +15,17 @@ import java.util.List;
 @RequestMapping(value = "/pedidos")
 public class PedidoResource {
     private final ListarPedidosUsecase listarPedidosUsecase;
+    private final LimparTudoUsecase limparTudoUsecase;
 
     @GetMapping
     public List<Pedido> list(){
         return listarPedidosUsecase.execute();
     }
+
+    @PostMapping("/limpar")
+    public void limpar(){
+        limparTudoUsecase.execute();
+    }
+
 
 }

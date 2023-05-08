@@ -3,6 +3,7 @@ package midianet.sisvend.infra.rest;
 import lombok.RequiredArgsConstructor;
 import midianet.sisvend.core.entity.Pedido;
 import midianet.sisvend.core.usecase.CriarPedidoUsecase;
+import midianet.sisvend.core.usecase.LimparTudoUsecase;
 import midianet.sisvend.core.usecase.ListarPedidosUsecase;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ public class PedidoResource {
     private final CriarPedidoUsecase criarPedido;
     private final ListarPedidosUsecase listarPedidos;
 
+    private final LimparTudoUsecase limparTudo;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
@@ -37,5 +40,11 @@ public class PedidoResource {
     public List<Pedido> list(){
         return listarPedidos.execute();
     }
+
+    @PostMapping("/limpar")
+    public void limpar(){
+        limparTudo.execute();
+    }
+
 
 }

@@ -31,6 +31,10 @@ public class Pedido implements Serializable {
     private Status status;
     private String rastreio;
 
+    @Column(name = "cod_cep",nullable = true, length = 11)
+    private String cep;
+
+
     @JoinColumn(name = "pedido_id")
     @OneToMany(cascade = CascadeType.ALL)
     private List<Item> itens;
